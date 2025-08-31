@@ -103,14 +103,14 @@ button{
     width: 100px;
 }
 
-.product-info{
+.task-info{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 
-.product-container{
+.task-div{
     display: flex;
     align-items: center;
     justify-content:space-between;
@@ -120,7 +120,7 @@ button{
 
 }
 
-.product-info ul{
+.task-info ul{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -128,7 +128,7 @@ button{
     gap: 50px;
 }
 
-.product-item{
+.task-item{
     display: flex;
     flex-direction: column;
     align-items: center;

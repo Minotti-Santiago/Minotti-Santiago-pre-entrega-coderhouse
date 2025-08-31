@@ -1,7 +1,7 @@
-let products = []
-let productId = 1
+let tasks = JSON.parse(localStorage.getItem("tasks")) || []
+let taskId = 1
 
-const form = document.getElementById("product-form")
+const form = document.getElementById("task-form")
 const addButton = document.getElementById("add-button")
 const taskContainer = document.getElementById("task-container")
 
@@ -9,74 +9,94 @@ form.addEventListener("submit", function(event){
 
     event.preventDefault()
 
-    const productName = document.getElementById("product-name").value;
-    const productDesc = document.getElementById("product-desc").value
-    const productDate = document.getElementById("product-date").value
+    const taskName = document.getElementById("task-name").value;
+    const taskDesc = document.getElementById("task-desc").value
+    const taskDate = document.getElementById("task-date").value
 
-    const product ={
-        id:productId ++,
-        name: productName,
-        description: productDesc,
-        date: productDate,
+    const task ={
+        id: taskId ++,
+        name: taskName,
+        description: taskDesc,
+        date: taskDate,
     }
 
-    products.push(product)
+    tasks.push(task)
     renderItems()
+    addTasksToLocalStorage()
 
     form.reset()
 })
 
+
+
 function renderItems() {
-    // Clear the container first
+    
     taskContainer.innerHTML = ""
     
-    // Then render all products
-    products.forEach((product) => {
-        const productContainer = document.createElement("div")
-        productContainer.classList.add("product-container")
+    tasks.forEach((task) => {
+        const taskDiv = document.createElement("div")
+        taskDiv.classList.add("task-div")
         
-        const productInfo = document.createElement("div")
-        productInfo.classList.add("product-info")
+        const taskInfo = document.createElement("div")
+        taskInfo.classList.add("task-info")
 
         const deleteBtn = document.createElement("button")
         deleteBtn.classList.add("delete-btn")
         deleteBtn.textContent = "Eliminar"
 
-        productInfo.innerHTML = `
+        taskInfo.innerHTML = `
             <ul>
-                <div class="product-item">
+                <div class="task-item">
                 <h2>ID</h2>
-                    <p>${product.id}</p>
+                    <p>${task.id}</p>   
                 </div>
 
-                <div class="product-item">
+                <div class="task-item">
                 <h2>Tarea</h2>
-                    <p>${product.name}</p>
+                    <p>${task.name}</p>
                 </div>
 
-                <div class="product-item">
+                <div class="task-item">
                 <h2>descripcion</h2>
-                    <p>${product.description}</p>
+                    <p>${task.description}</p>
                 </div>
 
-                <div class="product-item">
+                <div class="task-item">
                 <h2>fecha de vencimiento</h2>
-                    <p>${product.date}</p>
+                    <p>${task.date}</p>
                 </div>
             </ul>
 
         `
 
-        deleteBtn.addEventListener("click", () => deleteProduct(product.id))
+        deleteBtn.addEventListener("click", () => deleteTask(task.id))
 
-        productContainer.appendChild(productInfo)
-        productContainer.appendChild(deleteBtn)
-        taskContainer.appendChild(productContainer)
+        taskDiv.appendChild(taskInfo)
+        taskDiv.appendChild(deleteBtn)
+        taskContainer.appendChild(taskDiv)
     })
 }
 
-function deleteProduct(productId){
-    products = products.filter((product) => product.id !== productId)
+function deleteTask(taskId){
+    tasks = tasks.filter((task) => task.id !== taskId)
 
-    renderItems()
+    renderItems()  
 }
+
+const addTasksToLocalStorage = () => {
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+}
+
+const getTasksFromLocalStorage = () => {
+    const tasks = localStorage.getItem("tasks")
+    return tasks ? JSON.parse(tasks) : []
+}
+
+const printTasksFromLocalStorage = (tasks) => {
+    tasks.forEach(task => renderItems(task))
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    printTasksFromLocalStorage(tasks)
+
+})
