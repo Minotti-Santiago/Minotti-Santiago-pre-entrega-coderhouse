@@ -4,51 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Pre Entrega - Coderhouse</title>
+    <title>Polleria CoderHome</title>
 </head>
 <body>
-    <Header>
-        <h1>Lista de Tareas</h1>
-        
-    </Header>
+    <header>
+        <h1>Polleria CoderHome</h1>
+    </header>
 
     <main>
-
-        <section class="form-section">
-            <form action="" class="form" id="task-form">
-
-                <div>
-                    <label for="">Nombre de la tarea</label>
-                    <input type="text" id="task-name">
-                </div>
-
-                <div>
-                    <label for="">Descripción</label>
-                    <input name="" id="task-desc"></input>
-                </div>
-
-                <div> 
-                    <label for="">Fecha de vencimiento</label>
-                    <input type="date" id="task-date">
-                </div>
-
-                <div class="btn-container">
-                    <button type="submit" id="add-button">agregar</button>
-                </div>
-
-            </form>
+        <section class="menu-section">
+            <h2>Menu</h2>
+            <div id="menu" class="grid">
+            </div>
         </section>
 
-        
+        <h3 id="abrir-carrito" class="carrito"> <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 17h-11v-14h-2" /><path d="M6 5l14 1l-1 7h-13" /></svg>Carrito <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-caret-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 10l6 6l6 -6h-12" /></svg></h3>
 
-            <div id="task-container">
-                
+        <span id="cerrar-carrito" class="cerrar-carrito">X</span>
+
+        <section class="carrito-section" id="carrito-section">
+            <div id="carrito">
             </div>
 
-
+        </section>
     </main>
 
-    <script src="main.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/menu-cards.js"></script>
+    <script type="module" src="js/notifications.js"></script>
+    <script type="module" src="js/carrito.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
-
